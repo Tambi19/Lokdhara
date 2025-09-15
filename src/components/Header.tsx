@@ -9,7 +9,7 @@ const Header: React.FC = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <header className="fixed top-0 w-full bg-white z-50 shadow-sm border-b border-gray-200">
+    <header className="fixed top-0 w-full bg-white z-50 shadow-sm border-b border-gray-200 rounded-b-3xl">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Left Logo */}

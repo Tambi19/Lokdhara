@@ -79,10 +79,10 @@ const MonasteryGrid: React.FC = () => {
             Explore Sacred Monasteries
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Journey through centuries-old monasteries, each telling unique stories of 
+            Journey through centuries-old monasteries, each telling unique stories of
             Buddhist culture and Sikkim's spiritual heritage
           </p>
-          
+
           {/* Filter Buttons */}
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <button className="px-6 py-2 bg-red-800 text-white rounded-full hover:bg-red-900 transition-colors duration-200">
@@ -102,54 +102,69 @@ const MonasteryGrid: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {monasteries.map((monastery) => (
-            <div key={monastery.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+            <div
+              key={monastery.id}
+              className="relative bg-white border border-gray-200/80 rounded-2xl shadow-md overflow-hidden 
+             hover:shadow-2xl hover:border-red-400/60 transition-all duration-500 transform hover:-translate-y-2"
+            >
+              {/* Image Section */}
               <div className="relative">
-                <img 
-                  src={monastery.image} 
+                <img
+                  src={monastery.image}
                   alt={monastery.name}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-52 object-cover rounded-t-2xl"
                 />
+
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+
+                {/* VR Badge */}
                 {monastery.hasVR && (
-                  <div className="absolute top-4 right-4 bg-red-800 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                  <div className="absolute top-4 right-4 bg-red-800/90 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-md">
                     VR Available
                   </div>
                 )}
-                <div className="absolute bottom-4 left-4 flex items-center space-x-2 bg-black/50 backdrop-blur-sm rounded-full px-3 py-1">
+
+                {/* Visitors Badge */}
+                <div className="absolute bottom-4 left-4 flex items-center space-x-2 bg-black/50 backdrop-blur-md rounded-full px-3 py-1 shadow">
                   <Eye className="w-4 h-4 text-white" />
-                  <span className="text-white text-sm">{monastery.visitors}</span>
+                  <span className="text-white text-xs font-medium">{monastery.visitors}</span>
                 </div>
               </div>
-              
+
+              {/* Content Section */}
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                  {monastery.name}
-                </h3>
+                <h3 className="text-lg font-bold text-gray-900 mb-1">{monastery.name}</h3>
                 <p className="text-gray-600 text-sm mb-4 leading-relaxed">
                   {monastery.description}
                 </p>
-                
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center space-x-1 text-gray-600 text-sm">
+
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center space-x-1 text-gray-500 text-xs font-medium">
                     <MapPin className="w-4 h-4" />
                     <span>{monastery.location}</span>
                   </div>
-                  <div className="flex items-center space-x-1 text-gray-600 text-sm">
+                  <div className="flex items-center space-x-1 text-gray-500 text-xs font-medium">
                     <Clock className="w-4 h-4" />
                     <span>Founded {monastery.founded}</span>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-1">
                     <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                    <span className="text-sm font-medium text-gray-700">{monastery.rating}</span>
+                    <span className="text-sm font-semibold text-gray-700">
+                      {monastery.rating}
+                    </span>
                   </div>
-                  <button className="bg-red-800 text-white px-4 py-2 rounded-lg hover:bg-red-900 transition-colors duration-200 text-sm font-medium">
-                    {monastery.hasVR ? 'Start VR Tour' : 'Learn More'}
+                  <button className="bg-gradient-to-r from-red-700 to-red-900 text-white px-4 py-2 rounded-lg 
+                         hover:from-red-800 hover:to-red-950 transition-all duration-300 text-sm font-semibold shadow-md">
+                    {monastery.hasVR ? "Start VR Tour" : "Learn More"}
                   </button>
                 </div>
               </div>
             </div>
+
           ))}
         </div>
       </div>

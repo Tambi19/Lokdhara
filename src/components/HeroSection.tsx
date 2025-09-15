@@ -49,7 +49,7 @@ const Hero: React.FC = () => {
       <div className="relative z-10 max-w-3xl px-4">
         <h1 className="text-5xl md:text-6xl font-bold leading-tight">
           Discover Sikkim's{" "}
-          <span className="text-purple-400">Sacred Heritage</span>
+          <span className="text-purple-300">Sacred Heritage</span>
         </h1>
         <p className="mt-6 text-lg md:text-xl text-gray-200">
           Immerse yourself in ancient monasteries through cutting-edge 360° VR

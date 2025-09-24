@@ -10,9 +10,9 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-10 h-10 bg-gradient-to-br from-red-700 to-red-600 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-lg">M</span>
+                <span className="text-white font-bold text-lg">D</span>
               </div>
-              <span className="text-xl font-bold">Monastery360</span>
+              <span className="text-xl font-bold">DarshanX</span>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Preserving and sharing Sikkim's sacred heritage through immersive digital experiences 
@@ -81,7 +81,7 @@ const Footer: React.FC = () => {
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-red-500" />
                 <a href="mailto:info@monastery360.in" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  info@monastery360.in
+                  info@darshanX.in
                 </a>
               </div>
             </div>
@@ -109,7 +109,7 @@ const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between">
           <div className="text-gray-400 text-sm mb-4 md:mb-0">
-            <p>&copy; 2025 Monastery360. All rights reserved.</p>
+            <p>&copy; 2025 DarshanX. All rights reserved.</p>
           </div>
           <div className="flex items-center space-x-6 text-sm">
             <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">Privacy Policy</a>

@@ -60,6 +60,15 @@ const MonasteryPhotoShowcase: React.FC = () => {
       monastery: "Dubdi Monastery",
       photographer: "Serenity Captured",
       likes: 203
+    },
+    {
+      id: 7,
+      src: "https://www.karmapa.org/wp-content/uploads/Rumtek_Monastery_-_Inside_Close_View-1400px-cropped.jpg",
+      title: "Rumtek Monastery Golden Hour",
+      monastery: "Rumtek Monastery",
+      photographer: "Heritage Team",
+      likes: 234,
+      featured: true
     }
   ];
 

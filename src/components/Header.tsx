@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import navlogo from "../assets/navlogo.png"; 
 import right1 from "../assets/right1.webp"; 
 import right2 from "../assets/right2.png"; 
+import title from "../assets/title.png";  // <-- import your title image
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,12 +15,12 @@ const Header: React.FC = () => {
         <div className="flex items-center justify-between h-16">
           {/* Left Logo */}
           <div className="flex items-center space-x-3">
-            <img src={navlogo} alt="Logo" className="h-10 w-auto" />
-<span className="text-xl font-bold bg-gradient-to-r from-purple-500 via-pink-500 to-teal-400 bg-clip-text text-transparent">
-  Monastery360
-</span>          </div>
+            <img src={navlogo} alt="Logo" className="h-20 w-auto" />
+            {/* Replace text with title image */}
+            <img src={title} alt="DarshanX Title" className="h-24 w-auto" />
+          </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation */} 
           <nav className="hidden md:flex items-center space-x-8 text-gray-700 font-medium">
             <a href="#home" className="hover:text-yellow-600 relative after:block after:h-[2px] after:w-0 after:bg-yellow-600 after:transition-all after:duration-300 hover:after:w-full">Home</a>
             <a href="#explore" className="hover:text-yellow-600 relative after:block after:h-[2px] after:w-0 after:bg-yellow-600 after:transition-all after:duration-300 hover:after:w-full">Explore</a>

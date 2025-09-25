@@ -3,10 +3,15 @@ import { Menu, X } from "lucide-react";
 import navlogo from "../assets/navlogo.png"; 
 import right1 from "../assets/right1.webp"; 
 import right2 from "../assets/right2.png"; 
-import title from "../assets/title.png";  // <-- import your title image
+import title from "../assets/title.png"; 
+
+// Font Awesome imports
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBus, faHotel, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isTripOpen, setIsTripOpen] = useState(false); // For dropdown
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
@@ -16,15 +21,58 @@ const Header: React.FC = () => {
           {/* Left Logo */}
           <div className="flex items-center space-x-3">
             <img src={navlogo} alt="Logo" className="h-20 w-auto" />
-            {/* Replace text with title image */}
             <img src={title} alt="DarshanX Title" className="h-24 w-auto" />
           </div>
 
-          {/* Desktop Navigation */} 
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8 text-gray-700 font-medium">
             <a href="#home" className="hover:text-yellow-600 relative after:block after:h-[2px] after:w-0 after:bg-yellow-600 after:transition-all after:duration-300 hover:after:w-full">Home</a>
             <a href="#explore" className="hover:text-yellow-600 relative after:block after:h-[2px] after:w-0 after:bg-yellow-600 after:transition-all after:duration-300 hover:after:w-full">Explore</a>
-            <a href="#vr-tours" className="hover:text-yellow-600 relative after:block after:h-[2px] after:w-0 after:bg-yellow-600 after:transition-all after:duration-300 hover:after:w-full">VR Tours</a>
+
+            {/* Plan Your Trip Dropdown */}
+            {/* Plan Your Trip Dropdown */}
+<div
+  className="relative"
+  onMouseEnter={() => setIsTripOpen(true)}
+  onMouseLeave={() => setIsTripOpen(false)}
+>
+  <button
+    className="hover:text-yellow-600 relative after:block after:h-[2px] after:w-0 after:bg-yellow-600 after:transition-all after:duration-300 hover:after:w-full"
+  >
+    Plan Your Trip
+  </button>
+
+  {isTripOpen && (
+    <div className="absolute left-0 mt-2 w-56 bg-white shadow-lg border border-gray-200 rounded-lg py-2">
+      <a
+        href="#transport"
+        className="flex items-center gap-2 px-4 py-2 hover:bg-yellow-100"
+      >
+        <FontAwesomeIcon icon={faBus} className="w-5 h-5 text-blue-500" />
+        Local Transport Services
+      </a>
+      <a
+        href="#stay"
+        className="flex items-center gap-2 px-4 py-2 hover:bg-yellow-100"
+      >
+        <FontAwesomeIcon icon={faHotel} className="w-5 h-5 text-blue-500" />
+        Stay & Food Recommendations
+      </a>
+      <a
+        href="#itineraries"
+        className="flex items-center gap-2 px-4 py-2 hover:bg-yellow-100"
+      >
+        <FontAwesomeIcon
+          icon={faLocationDot}
+          className="w-5 h-5 text-blue-500"
+        />
+        Travel Itineraries
+      </a>
+    </div>
+  )}
+</div>
+
+
             <a href="#archive" className="hover:text-yellow-600 relative after:block after:h-[2px] after:w-0 after:bg-yellow-600 after:transition-all after:duration-300 hover:after:w-full">Archive</a>
             <a href="#events" className="hover:text-yellow-600 relative after:block after:h-[2px] after:w-0 after:bg-yellow-600 after:transition-all after:duration-300 hover:after:w-full">Events</a>
             <a href="#shop" className="hover:text-yellow-600 relative after:block after:h-[2px] after:w-0 after:bg-yellow-600 after:transition-all after:duration-300 hover:after:w-full">Shop</a>
@@ -51,7 +99,26 @@ const Header: React.FC = () => {
           <nav className="flex flex-col space-y-2 px-4 py-3 text-gray-700 font-medium">
             <a href="#home" className="hover:text-yellow-600">Home</a>
             <a href="#explore" className="hover:text-yellow-600">Explore</a>
-            <a href="#vr-tours" className="hover:text-yellow-600">VR Tours</a>
+
+            {/* Mobile Submenu */}
+            <details>
+              <summary className="cursor-pointer hover:text-yellow-600">Plan Your Trip</summary>
+              <div className="ml-4 mt-2 flex flex-col space-y-2">
+                <a href="#transport" className="flex items-center gap-2 hover:text-yellow-600">
+                  <FontAwesomeIcon icon={faBus} className="text-blue-600 w-4 h-4" />
+                  Local Transport Services
+                </a>
+                <a href="#stay" className="flex items-center gap-2 hover:text-yellow-600">
+                  <FontAwesomeIcon icon={faHotel} className="text-blue-600 w-4 h-4" />
+                  Stay & Food Recommendations
+                </a>
+                <a href="#itineraries" className="flex items-center gap-2 hover:text-yellow-600">
+                  <FontAwesomeIcon icon={faLocationDot} className="text-blue-600 w-4 h-4" />
+                  Travel Itineraries
+                </a>
+              </div>
+            </details>
+
             <a href="#archive" className="hover:text-yellow-600">Archive</a>
             <a href="#events" className="hover:text-yellow-600">Events</a>
             <a href="#shop" className="hover:text-yellow-600">Shop</a>

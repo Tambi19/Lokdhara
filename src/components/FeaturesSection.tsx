@@ -55,7 +55,7 @@ const FeaturesSection: React.FC = () => {
 
   return (
     <section
-      className="relative h-screen flex flex-col items-center justify-center text-white overflow-hidden"
+  className="relative py-20 flex flex-col items-center justify-center text-white overflow-hidden"
       style={{
         backgroundImage: `url(${featuresBg})`,
         backgroundSize: "cover",
@@ -65,10 +65,10 @@ const FeaturesSection: React.FC = () => {
       <div className="absolute inset-0 bg-black/30"></div>
 
       <div className="mb-6 relative z-10 container px-6">
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-center">
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-center font-tibetan text-black">
           Immersive Cultural Experience
         </h2>
-        <p className="text-lg text-gray-200 max-w-3xl mx-auto text-center mb-12">
+        <p className="text-lg text-black-500 max-w-3xl mx-auto text-center mb-12">
           Discover the rich heritage of Sikkim's monasteries through cutting-edge technology and authentic cultural preservation
         </p>
 

@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from "react";
-import monasteryImg from "../assets/monastery.webp";
+import monasteryImg from "../assets/monast.png";
 import gsap from "gsap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHourglassHalf,faBell } from "@fortawesome/free-solid-svg-icons";
 
 const Hero: React.FC = () => {
   const btnRefs = useRef<HTMLButtonElement[]>([]);
@@ -47,11 +49,11 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-purple-900/40"></div>
 
       <div className="relative z-10 max-w-3xl px-4">
-        <h1 className="text-5xl md:text-6xl font-bold leading-tight">
+        <h1 className="text-5xl md:text-6xl font-bold leading-tight font-tibetan">
           Discover Sikkim's{" "}
-          <span className="text-purple-300">Sacred Heritage</span>
+          <span className="text-purple-300 font-tibetan">Sacred Heritage</span>
         </h1>
-        <p className="mt-6 text-lg md:text-xl text-gray-200">
+        <p className="mt-6 text-lg md:text-xl text-gray-200 ">
           Immerse yourself in ancient monasteries through cutting-edge 360° VR
           technology, exploring centuries of Buddhist wisdom and cultural
           treasures.
@@ -61,27 +63,29 @@ const Hero: React.FC = () => {
         <div className="mt-8 flex flex-wrap justify-center gap-6">
           {/* VR Tour Button */}
           <button
-            ref={(el) => el && (btnRefs.current[0] = el)}
-            className="relative px-8 py-3 rounded-full font-semibold text-white 
-            border border-teal-400/70 backdrop-blur-lg 
-            bg-gradient-to-r from-teal-400/30 to-purple-500/30 
-            hover:from-teal-400/50 hover:to-purple-500/50 
-            transition duration-300 overflow-hidden"
-          >
-            Start VR Tour
-          </button>
+  ref={(el) => el && (btnRefs.current[0] = el)}
+  className="relative flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-white 
+             border border-orange-400/70 backdrop-blur-lg 
+             bg-gradient-to-r from-orange-400/30 to-pink-500/30 
+             hover:from-orange-400/50 hover:to-pink-500/50 
+             transition duration-300 overflow-hidden"
+>
+  <FontAwesomeIcon icon={faHourglassHalf} className="w-5 h-5 text-blue-300" />
+  Time Travel
+</button>
 
           {/* Explore Map Button */}
           <button
-            ref={(el) => el && (btnRefs.current[1] = el)}
-            className="relative px-8 py-3 rounded-full font-semibold text-white 
-            border border-orange-400/70 backdrop-blur-lg 
-            bg-gradient-to-r from-orange-400/30 to-pink-500/30 
-            hover:from-orange-400/50 hover:to-pink-500/50 
-            transition duration-300 overflow-hidden"
-          >
-            Explore Map
-          </button>
+  ref={(el) => el && (btnRefs.current[1] = el)}
+  className="relative flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-white 
+             border border-orange-400/70 backdrop-blur-lg 
+             bg-gradient-to-r from-orange-400/30 to-pink-500/30 
+             hover:from-orange-400/50 hover:to-pink-500/50 
+             transition duration-300 overflow-hidden"
+>
+  <FontAwesomeIcon icon={faBell} className="w-5 h-5 text-white" />
+  Live Darshan
+</button>
         </div>
 
         {/* Stats */}

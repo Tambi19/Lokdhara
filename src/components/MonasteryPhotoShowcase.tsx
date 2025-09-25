@@ -126,7 +126,7 @@ const MonasteryPhotoShowcase: React.FC = () => {
     <section ref={showcaseRef} className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 bg-clip-text text-transparent">
             Sacred Moments Captured
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">

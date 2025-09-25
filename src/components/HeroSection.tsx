@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import monasteryImg from "../assets/monast.png";
+import monasteryImg from "../assets/monasteryy.avif";
 import gsap from "gsap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHourglassHalf,faBell } from "@fortawesome/free-solid-svg-icons";

@@ -1,81 +1,80 @@
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Camera, Maximize2, Heart, Share2 } from 'lucide-react';
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Camera, Maximize2, Heart, Share2 } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const MonasteryPhotoShowcase: React.FC = () => {
+const HeritagePhotoShowcase: React.FC = () => {
   const showcaseRef = useRef<HTMLDivElement>(null);
   const photoGridRef = useRef<HTMLDivElement>(null);
   const featuredPhotoRef = useRef<HTMLDivElement>(null);
 
-  const monasteryPhotos = [
+  const heritagePhotos = [
     {
       id: 1,
-      src: "https://www.karmapa.org/wp-content/uploads/Rumtek_Monastery_-_Inside_Close_View-1400px-cropped.jpg",
-      title: "Rumtek Monastery Golden Hour",
-      monastery: "Rumtek Monastery",
-      photographer: "Heritage Team",
-      likes: 234,
+      src: "https://static.wixstatic.com/media/055605_65e20a7fcbc54e2e8720adfc2544c35e~mv2.jpg/v1/fill/w_1800,h_1082,al_c,q_85/taj_new_contant_edited.jpg",
+      title: "Taj Mahal at Twilight",
+      site: "Taj Mahal, Agra",
+      photographer: "Heritage Archive",
+      likes: 520,
       featured: true
     },
     {
       id: 2,
-      src: "https://res.cloudinary.com/kmadmin/image/upload/v1726815209/kiomoi/Pemayangtse_Monastery_5141.jpg",
-      title: "Ancient Prayer Wheels",
-      monastery: "Pemayangtse Monastery",
-      photographer: "Cultural Archive",
-      likes: 189
+      src: "https://blog.dookinternational.com/wp-content/uploads/2017/06/a3.jpeg",
+      title: "Qutub Minar Rise",
+      site: "Qutub Minar, Delhi",
+      photographer: "Monument Lens",
+      likes: 310
     },
     {
       id: 3,
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Enchey_Monastery_-_Gangtok_-_Sikkim_-_India.jpg/1024px-Enchey_Monastery_-_Gangtok_-_Sikkim_-_India.jpg",
-      title: "Morning Meditation Hall",
-      monastery: "Enchey Monastery",
-      photographer: "Spiritual Journey",
-      likes: 156
+      src: "https://s7ap1.scene7.com/is/image/incredibleindia/konark-temple-puri-odisha-2-attr-hero?qlt=82&ts=1726674676369",
+      title: "Konark Sun Temple",
+      site: "Konark Sun Temple, Odisha",
+      photographer: "Ancient Stones",
+      likes: 405
     },
     {
       id: 4,
-      src: "https://tripxl.com/blog/wp-content/uploads/2024/08/Tashiding-Monastery-OG-Photo.jpg",
-
-      title: "Sacred Mountain View",
-      monastery: "Tashiding Monastery",
-      photographer: "Mountain Heritage",
-      likes: 298
+      src: "https://www.andbeyond.com/wp-content/uploads/sites/5/khajuraho-india-temple-complex.jpg",
+      title: "Khajuraho Carvings",
+      site: "Khajuraho Group of Monuments, MP",
+      photographer: "Sculpture Eye",
+      likes: 278
     },
     {
       id: 5,
-      src: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0b/8f/64/9f/ralong-monastery-view.jpg?w=900&h=-1&s=1",
-      title: "Traditional Architecture",
-      monastery: "Ralang Monastery",
-      photographer: "Architecture Focus",
-      likes: 167
+      src: "https://blogs.pathbeat.in/wp-content/uploads/2024/09/Hampi_karnataka.jpg",
+      title: "Vijaya Vittala Temple, Hampi",
+      site: "Hampi, Karnataka",
+      photographer: "Ruins Travel",
+      likes: 343
     },
     {
       id: 6,
-      src: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/f3/0e/56/caption.jpg?w=1200&h=1200&s=1",
-      title: "Peaceful Courtyard",
-      monastery: "Dubdi Monastery",
-      photographer: "Serenity Captured",
-      likes: 203
+      src: "https://shiningsikh.com/wp-content/uploads/2024/12/IMG_2687-e1734423773701.jpg",
+      title: "Golden Temple Reflection",
+      site: "Harmandir Sahib, Amritsar",
+      photographer: "Spiritual Frame",
+      likes: 462
     },
     {
       id: 7,
-      src: "https://www.karmapa.org/wp-content/uploads/Rumtek_Monastery_-_Inside_Close_View-1400px-cropped.jpg",
-      title: "Rumtek Monastery Golden Hour",
-      monastery: "Rumtek Monastery",
-      photographer: "Heritage Team",
-      likes: 234,
-      featured: true
+      src: "https://cdn.kastatic.org/ka-perseus-images/a8a19d777ab5fee4a3666927202d88dcba7bd42c.jpg",
+      title: "Meenakshi Temple Glow",
+      site: "Meenakshi Temple, Madurai",
+      photographer: "Temple Glow",
+      likes: 299
     }
   ];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Animate photo grid on scroll
-      gsap.fromTo(photoGridRef.current?.children || [], 
+      gsap.fromTo(
+        photoGridRef.current?.children || [],
         {
           y: 100,
           opacity: 0,
@@ -98,7 +97,8 @@ const MonasteryPhotoShowcase: React.FC = () => {
       );
 
       // Featured photo animation
-      gsap.fromTo(featuredPhotoRef.current,
+      gsap.fromTo(
+        featuredPhotoRef.current,
         {
           scale: 0.5,
           opacity: 0,
@@ -123,15 +123,18 @@ const MonasteryPhotoShowcase: React.FC = () => {
   }, []);
 
   return (
-    <section ref={showcaseRef} className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white overflow-hidden">
+    <section
+      ref={showcaseRef}
+      className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white overflow-hidden"
+    >
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 bg-clip-text text-transparent">
-            Sacred Moments Captured
+          <h2 className="text-2xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 bg-clip-text text-transparent">
+            Heritage in Focus
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Experience the breathtaking beauty and spiritual essence of Sikkim's monasteries 
-            through our curated photography collection
+            Explore the timeless beauty and cultural legacy of India's iconic heritage
+            through our curated visual journey.
           </p>
         </div>
 
@@ -139,20 +142,26 @@ const MonasteryPhotoShowcase: React.FC = () => {
         <div ref={featuredPhotoRef} className="mb-16">
           <div className="relative max-w-4xl mx-auto group cursor-pointer">
             <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-              <img 
-                src={monasteryPhotos[0].src}
-                alt={monasteryPhotos[0].title}
+              <img
+                src={heritagePhotos[0].src}
+                alt={heritagePhotos[0].title}
                 className="w-full h-96 md:h-[500px] object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-              
+
               {/* Photo Info Overlay */}
               <div className="absolute bottom-0 left-0 right-0 p-8">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="text-2xl md:text-3xl font-bold mb-2">{monasteryPhotos[0].title}</h3>
-                    <p className="text-gray-300 mb-1">{monasteryPhotos[0].monastery}</p>
-                    <p className="text-sm text-gray-400">by {monasteryPhotos[0].photographer}</p>
+                    <h3 className="text-2xl md:text-3xl font-bold mb-2">
+                      {heritagePhotos[0].title}
+                    </h3>
+                    <p className="text-gray-300 mb-1">
+                      {heritagePhotos[0].site}
+                    </p>
+                    <p className="text-sm text-gray-400">
+                      by {heritagePhotos[0].photographer}
+                    </p>
                   </div>
                   <div className="flex items-center space-x-4">
                     <button className="p-3 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors duration-200">
@@ -178,24 +187,29 @@ const MonasteryPhotoShowcase: React.FC = () => {
         </div>
 
         {/* Photo Grid */}
-        <div ref={photoGridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {monasteryPhotos.slice(1).map((photo, index) => (
+        <div
+          ref={photoGridRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          {heritagePhotos.slice(1).map((photo) => (
             <div key={photo.id} className="group cursor-pointer">
               <div className="relative overflow-hidden rounded-xl shadow-lg">
-                <img 
+                <img
                   src={photo.src}
                   alt={photo.title}
                   className="w-full h-64 object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
+
                 {/* Hover Overlay */}
                 <div className="absolute inset-0 flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="w-full">
                     <h4 className="text-lg font-semibold mb-1">{photo.title}</h4>
-                    <p className="text-sm text-gray-300 mb-2">{photo.monastery}</p>
+                    <p className="text-sm text-gray-300 mb-2">{photo.site}</p>
                     <div className="flex items-center justify-between">
-                      <span className="text-xs text-gray-400">by {photo.photographer}</span>
+                      <span className="text-xs text-gray-400">
+                        by {photo.photographer}
+                      </span>
                       <div className="flex items-center space-x-2">
                         <Heart className="w-4 h-4 text-red-400" />
                         <span className="text-sm">{photo.likes}</span>
@@ -222,4 +236,4 @@ const MonasteryPhotoShowcase: React.FC = () => {
   );
 };
 
-export default MonasteryPhotoShowcase;
+export default HeritagePhotoShowcase;

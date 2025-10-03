@@ -1,28 +1,24 @@
 import React from 'react';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
-import FeaturesSection from './components/FeaturesSection';
+// import FeaturesSection from './components/FeaturesSection';
 import MonasteryPhotoShowcase from './components/MonasteryPhotoShowcase';
 import MonasteryGrid from './components/MonasteryGrid';
-import InteractiveMap from './components/InteractiveMap';
-import ArchiveSection from './components/ArchiveSection';
-import EventsSection from './components/EventsSection';
-import ShopSection from './components/ShopSection';
 import Footer from './components/Footer';
+import { Chatbot } from './components/Chatbot';
+import '@google/model-viewer';
+
 
 function App() {
   return (
     <div className="min-h-screen">
       <Header />
       <HeroSection />
-      <FeaturesSection />
+      {/* <FeaturesSection /> */}
       <MonasteryPhotoShowcase />
       <MonasteryGrid />
-      <InteractiveMap />
-      <ArchiveSection />
-      <EventsSection />
-      <ShopSection />
-      <Footer />
+      <Footer /> 
+      <Chatbot />
     </div>
   );
 }

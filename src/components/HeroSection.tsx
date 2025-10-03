@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
-import monasteryImg from "../assets/monasteryy.avif";
 import gsap from "gsap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHourglassHalf,faBell } from "@fortawesome/free-solid-svg-icons";
+import heroimg from "../assets/hero.jpg";
 
 const Hero: React.FC = () => {
   const btnRefs = useRef<HTMLButtonElement[]>([]);
@@ -40,7 +40,7 @@ const Hero: React.FC = () => {
       id="home"
       className="relative h-screen flex items-center justify-center text-center text-white"
       style={{
-        backgroundImage: `url(${monasteryImg})`,
+        backgroundImage: `url(${heroimg})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -50,12 +50,12 @@ const Hero: React.FC = () => {
 
       <div className="relative z-10 max-w-3xl px-4">
         <h1 className="text-5xl md:text-6xl font-bold leading-tight font-tibetan">
-          Discover Sikkim's{" "}
-          <span className="text-purple-300 font-tibetan">Sacred Heritage</span>
+          Discover{" "}
+          <span className="text-purple-300 font-tibetan">Culture & Sacred Heritage</span>
         </h1>
         <p className="mt-6 text-lg md:text-xl text-gray-200 ">
-          Immerse yourself in ancient monasteries through cutting-edge 360° VR
-          technology, exploring centuries of Buddhist wisdom and cultural
+          Immerse yourself in Cultural Heritage Sites through cutting-edge 360° AR
+          technology, exploring centuries of cultural
           treasures.
         </p>
 
@@ -84,7 +84,7 @@ const Hero: React.FC = () => {
              transition duration-300 overflow-hidden"
 >
   <FontAwesomeIcon icon={faBell} className="w-5 h-5 text-white" />
-  Live Darshan
+  AR View
 </button>
         </div>
 

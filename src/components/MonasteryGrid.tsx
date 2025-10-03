@@ -1,74 +1,98 @@
-import React from 'react';
-import { MapPin, Clock, Eye, Star } from 'lucide-react';
+import React, { useState } from "react";
+import { MapPin, Clock, Eye, Star } from "lucide-react";
 
-const MonasteryGrid: React.FC = () => {
-  const monasteries = [
+const HeritageGrid: React.FC = () => {
+  const [selectedSite, setSelectedSite] = useState<any>(null);
+
+  const heritageSites = [
     {
       id: 1,
-      name: "Rumtek Monastery",
-      location: "Gangtok",
-      founded: "1966",
-      image: "https://www.karmapa.org/wp-content/uploads/Rumtek_Monastery_-_Inside_Close_View-1400px-cropped.jpg",
-      description: "The largest monastery in Sikkim and seat of the Kagyu lineage",
-      rating: 4.8,
-      visitors: "12K+",
-      hasVR: true
+      name: "Taj Mahal",
+      location: "Agra, Uttar Pradesh",
+      founded: "1632",
+      image:
+        "https://static.wixstatic.com/media/055605_65e20a7fcbc54e2e8720adfc2544c35e~mv2.jpg/v1/fill/w_1800,h_1082,al_c,q_85/taj_new_contant_edited.jpg",
+      description:
+        "A symbol of eternal love, the Taj Mahal is a UNESCO World Heritage Site and one of the New Seven Wonders of the World.",
+      rating: 4.9,
+      visitors: "70K+",
+      isArAvailable: true,
+      arGlb: "/model/ar/taj.glb",
+      arUsdz: "/model/ar/taj.usdz",
     },
     {
       id: 2,
-      name: "Pemayangtse Monastery",
-      location: "Pelling",
-      founded: "1705",
-      image: "https://res.cloudinary.com/kmadmin/image/upload/v1726815209/kiomoi/Pemayangtse_Monastery_5141.jpg",
-      description: "One of the oldest monasteries in Sikkim with stunning architecture",
-      rating: 4.7,
-      visitors: "8K+",
-      hasVR: true
+      name: "Qutub Minar",
+      location: "Delhi",
+      founded: "1199",
+      image:
+        "https://blog.dookinternational.com/wp-content/uploads/2017/06/a3.jpeg",
+      description:
+        "The tallest brick minaret in the world, built during the Delhi Sultanate.",
+      rating: 4.8,
+      visitors: "55K+",
+      isArAvailable: true,
+      arGlb: "/model/ar/qutub.glb",
+      arUsdz: "/model/ar/qutub.usdz",
     },
     {
       id: 3,
-      name: "Enchey Monastery",
-      location: "Gangtok",
-      founded: "1909",
-      image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Enchey_Monastery_-_Gangtok_-_Sikkim_-_India.jpg/1024px-Enchey_Monastery_-_Gangtok_-_Sikkim_-_India.jpg",
-      description: "Famous for its annual Chaam dance and spiritual significance",
-      rating: 4.6,
-      visitors: "6K+",
-      hasVR: false
+      name: "Konark Sun Temple",
+      location: "Odisha",
+      founded: "13th Century",
+      image:
+        "https://s7ap1.scene7.com/is/image/incredibleindia/konark-temple-puri-odisha-2-attr-hero?qlt=82&ts=1726674676369",
+      description:
+        "Famous for its stone chariot with intricately carved wheels, walls, and pillars.",
+      rating: 4.7,
+      visitors: "30K+",
+      isArAvailable: true,
+      arGlb: "/model/ar/konark.glb",
+      arUsdz: "/model/ar/konark.usdz",
     },
     {
       id: 4,
-      name: "Tashiding Monastery",
-      location: "Tashiding",
-      founded: "1717",
-      image: "https://tripxl.com/blog/wp-content/uploads/2024/08/Tashiding-Monastery-OG-Photo.jpg",
-      description: "Sacred site believed to wash away sins of devotees",
-      rating: 4.9,
-      visitors: "5K+",
-      hasVR: true
+      name: "Hampi",
+      location: "Karnataka",
+      founded: "14th Century",
+      image:
+        "https://blogs.pathbeat.in/wp-content/uploads/2024/09/Hampi_karnataka.jpg",
+      description:
+        "The ruins of Vijayanagara, once one of the richest cities in the world.",
+      rating: 4.8,
+      visitors: "40K+",
+      isArAvailable: true,
+      arGlb: "/model/ar/hampi.glb",
+      arUsdz: "/model/ar/hampi.usdz",
     },
     {
       id: 5,
-      name: "Ralang Monastery",
-      location: "Ravangla",
-      founded: "1768",
-      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0b/8f/64/9f/ralong-monastery-view.jpg?w=900&h=-1&s=1",
-      description: "Known for its ancient murals and peaceful meditation halls",
-      rating: 4.5,
-      visitors: "4K+",
-      hasVR: false
+      name: "Humayuns Tomb",
+      location: "Amritsar, Punjab",
+      founded: "1581",
+      image:
+        "https://res.cloudinary.com/https-www-isango-com/image/upload/f_auto/v7682/South%20Asia/India/Delhi/43044.jpg",
+      description:
+        "The most important pilgrimage site of Sikhism, famous for its golden dome.",
+      rating: 4.9,
+      visitors: "60K+",
+      isArAvailable: false,
     },
     {
       id: 6,
-      name: "Dubdi Monastery",
-      location: "Yuksom",
-      founded: "1701",
-      image: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2b/f3/0e/56/caption.jpg?w=1200&h=1200&s=1",
-      description: "The oldest monastery in Sikkim with historical significance",
-      rating: 4.4,
-      visitors: "3K+",
-      hasVR: true
-    }
+      name: "Meenakshi Temple",
+      location: "Madurai, Tamil Nadu",
+      founded: "6th Century (rebuilt 16th Century)",
+      image:
+        "https://cdn.kastatic.org/ka-perseus-images/a8a19d777ab5fee4a3666927202d88dcba7bd42c.jpg",
+      description:
+        "Known for its towering gopurams adorned with thousands of colorful sculptures.",
+      rating: 4.8,
+      visitors: "35K+",
+      isArAvailable: true,
+      arGlb: "/model/ar/meenakshi.glb",
+      arUsdz: "/model/ar/meenakshi.usdz",
+    },
   ];
 
   return (
@@ -76,77 +100,55 @@ const MonasteryGrid: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-            Explore Sacred Monasteries
+            Explore India's Heritage
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Journey through centuries-old monasteries, each telling unique stories of
-            Buddhist culture and Sikkim's spiritual heritage
+            Journey through timeless monuments and temples, each narrating the
+            story of India's glorious past.
           </p>
-
-          {/* Filter Buttons */}
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <button className="px-6 py-2 bg-red-800 text-white rounded-full hover:bg-red-900 transition-colors duration-200">
-              All Monasteries
-            </button>
-            <button className="px-6 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition-colors duration-200">
-              VR Available
-            </button>
-            <button className="px-6 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition-colors duration-200">
-              Historical
-            </button>
-            <button className="px-6 py-2 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition-colors duration-200">
-              Active Monasteries
-            </button>
-          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {monasteries.map((monastery) => (
+          {heritageSites.map((site) => (
             <div
-              key={monastery.id}
+              key={site.id}
               className="relative bg-white border border-gray-200/80 rounded-2xl shadow-md overflow-hidden 
-             hover:shadow-2xl hover:border-red-400/60 transition-all duration-500 transform hover:-translate-y-2"
+             hover:shadow-2xl hover:border-yellow-400/60 transition-all duration-500 transform hover:-translate-y-2"
             >
-              {/* Image Section */}
+              {/* Image */}
               <div className="relative">
                 <img
-                  src={monastery.image}
-                  alt={monastery.name}
+                  src={site.image}
+                  alt={site.name}
                   className="w-full h-52 object-cover rounded-t-2xl"
                 />
-
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
-
-                {/* VR Badge */}
-                {monastery.hasVR && (
-                  <div className="absolute top-4 right-4 bg-red-800/90 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-md">
-                    VR Available
-                  </div>
-                )}
 
                 {/* Visitors Badge */}
                 <div className="absolute bottom-4 left-4 flex items-center space-x-2 bg-black/50 backdrop-blur-md rounded-full px-3 py-1 shadow">
                   <Eye className="w-4 h-4 text-white" />
-                  <span className="text-white text-xs font-medium">{monastery.visitors}</span>
+                  <span className="text-white text-xs font-medium">
+                    {site.visitors}
+                  </span>
                 </div>
               </div>
 
-              {/* Content Section */}
+              {/* Content */}
               <div className="p-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-1">{monastery.name}</h3>
+                <h3 className="text-lg font-bold text-gray-900 mb-1">
+                  {site.name}
+                </h3>
                 <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-                  {monastery.description}
+                  {site.description}
                 </p>
 
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center space-x-1 text-gray-500 text-xs font-medium">
                     <MapPin className="w-4 h-4" />
-                    <span>{monastery.location}</span>
+                    <span>{site.location}</span>
                   </div>
                   <div className="flex items-center space-x-1 text-gray-500 text-xs font-medium">
                     <Clock className="w-4 h-4" />
-                    <span>Founded {monastery.founded}</span>
+                    <span>Founded {site.founded}</span>
                   </div>
                 </div>
 
@@ -154,22 +156,56 @@ const MonasteryGrid: React.FC = () => {
                   <div className="flex items-center space-x-1">
                     <Star className="w-4 h-4 text-yellow-400 fill-current" />
                     <span className="text-sm font-semibold text-gray-700">
-                      {monastery.rating}
+                      {site.rating}
                     </span>
                   </div>
-                  <button className="bg-gradient-to-r from-red-700 to-red-900 text-white px-4 py-2 rounded-lg 
-                         hover:from-red-800 hover:to-red-950 transition-all duration-300 text-sm font-semibold shadow-md">
-                    {monastery.hasVR ? "Start VR Tour" : "Learn More"}
-                  </button>
+                  {site.isArAvailable ? (
+                    <button
+                      onClick={() => setSelectedSite(site)}
+                      className="bg-gradient-to-r from-green-600 to-green-800 text-white px-4 py-2 rounded-lg 
+                         hover:from-green-700 hover:to-green-900 transition-all duration-300 text-sm font-semibold shadow-md"
+                    >
+                      View AR
+                    </button>
+                  ) : (
+                    <button className="bg-gradient-to-r from-blue-700 to-blue-900 text-white px-4 py-2 rounded-lg 
+                         hover:from-blue-800 hover:to-blue-950 transition-all duration-300 text-sm font-semibold shadow-md">
+                      Learn More
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
-
           ))}
         </div>
       </div>
+
+      {/* AR Modal */}
+      {selectedSite && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/90 z-50">
+          <button
+            onClick={() => setSelectedSite(null)}
+            className="absolute top-4 right-4 bg-red-600 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl font-bold shadow-lg z-50"
+          >
+            ✕
+          </button>
+
+          <model-viewer
+            src={selectedSite.arGlb}
+            ios-src={selectedSite.arUsdz}
+            alt={selectedSite.name}
+            ar
+            auto-rotate
+            camera-controls
+            interaction-prompt="auto"
+            shadow-intensity="1"
+            exposure="1"
+            style={{ width: "90%", height: "90%" }}
+          ></model-viewer>
+        </div>
+      )}
     </section>
   );
 };
 
-export default MonasteryGrid;
+export default HeritageGrid;

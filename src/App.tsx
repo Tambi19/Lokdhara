@@ -6,7 +6,7 @@ import MonasteryGrid from "./components/MonasteryGrid";
 import Footer from "./components/Footer";
 import { Chatbot } from "./components/Chatbot";
 import TimeTravel from "./components/TimeTravel";
-import ARView from "./components/Arview";
+import ARTab from "./components/Artab";
 import "@google/model-viewer";
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
       )}
 
       {activeTab === "timetravel" && <TimeTravel onBack={() => setActiveTab("home")} />}
-      {activeTab === "arview" && <ARView onBack={() => setActiveTab("home")} />}
+      {activeTab === "arview" && <ARTab onBack={() => setActiveTab("home")} />}
 
       <Chatbot />
     </div>

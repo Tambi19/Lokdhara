@@ -1,13 +1,19 @@
+// src/components/ARTab.jsx
 import React, { useState } from "react";
 
-const ARView: React.FC = () => {
+type ARTabProps = {
+  onBack: () => void; // onBack is a function with no parameters
+};
+
+const ARTab: React.FC<ARTabProps> = ({ onBack }) => {
   const [selectedLang, setSelectedLang] = useState("en");
 
   const audioFiles: Record<string, string> = {
-    en: "/audio/monument_en.mp3",
-    hi: "/audio/monument_hi.mp3",
-    fr: "/audio/monument_fr.mp3",
-  };
+  en: "/audio/monument_en.mp3",
+  hi: "/audio/monument_hi.mp3",
+  fr: "/audio/monument_fr.mp3",
+};
+
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 text-white">
@@ -39,16 +45,19 @@ const ARView: React.FC = () => {
       {/* Audio Guide */}
       <div className="mt-4">
         <audio controls key={selectedLang}>
-          <source src={audioFiles[selectedLang]} type="audio/mpeg" />
+    <source src={audioFiles[selectedLang]} type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>
       </div>
 
-      <a href="/" className="mt-6 px-6 py-2 bg-purple-500 rounded-lg">
+      <button
+        onClick={onBack}
+        className="mt-6 px-6 py-2 bg-purple-500 rounded-lg"
+      >
         ⬅ Back Home
-      </a>
+      </button>
     </div>
   );
 };
 
-export default ARView;
+export default ARTab;

@@ -35,6 +35,12 @@ const Header: React.FC = () => {
         >
           Explore
         </a>
+        <a
+          href="#crowdreport"
+          className="hover:text-yellow-600 relative after:block after:h-[2px] after:w-0 after:bg-yellow-600 after:transition-all after:duration-300 hover:after:w-full"
+        >
+          Community 
+        </a>
 
         {/* Dropdown */}
         <div

@@ -6,7 +6,7 @@ import MonasteryGrid from "./components/MonasteryGrid";
 import Footer from "./components/Footer";
 import { Chatbot } from "./components/Chatbot";
 import TimeTravel from "./components/TimeTravel";
-import ARTab from "./components/Artab";
+import CrowdReportTab from "./components/CrowdReportTab.tsx";
 import "@google/model-viewer";
 
 function App() {
@@ -20,13 +20,13 @@ function App() {
         <>
           <Hero onNavigate={setActiveTab} />
           <MonasteryPhotoShowcase />
+          <CrowdReportTab />
           <MonasteryGrid />
           <Footer />
         </>
       )}
 
       {activeTab === "timetravel" && <TimeTravel onBack={() => setActiveTab("home")} />}
-      {activeTab === "arview" && <ARTab onBack={() => setActiveTab("home")} />}
 
       <Chatbot />
     </div>

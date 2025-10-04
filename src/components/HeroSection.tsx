@@ -58,18 +58,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             Time Travel
           </button>
 
-          <button
-            ref={(el) => el && (btnRefs.current[1] = el)}
-            onClick={() => onNavigate("arview")}
-            className="relative flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-white 
-                       border border-orange-400/70 backdrop-blur-lg 
-                       bg-gradient-to-r from-orange-400/30 to-pink-500/30 
-                       hover:from-orange-400/50 hover:to-pink-500/50 
-                       transition duration-300 overflow-hidden"
-          >
-            <FontAwesomeIcon icon={faBell} className="w-5 h-5 text-white" />
-            AR View
-          </button>
+          
         </div>
       </div>
     </section>

@@ -1,8 +1,20 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { MapPin, Clock, Eye, Star, Navigation } from "lucide-react";
 
 const HeritageGrid: React.FC = () => {
   const [selectedSite, setSelectedSite] = useState<any>(null);
+
+  useEffect(() => {
+  if (selectedSite) {
+    const audio = new Audio(`/audio/${selectedSite.id}.mp3`);
+    audio.play();
+    return () => {
+      audio.pause();
+      audio.currentTime = 0;
+    };
+  }
+}, [selectedSite]);
+
 
   const heritageSites = [
     {
@@ -50,9 +62,23 @@ const HeritageGrid: React.FC = () => {
       mapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Konark+Sun+Temple+Odisha",
     },
     { id: 4, name: "Hampi", location: "Karnataka", founded: "14th Century", image: "https://blogs.pathbeat.in/wp-content/uploads/2024/09/Hampi_karnataka.jpg", description: "The ruins of Vijayanagara, once one of the richest cities in the world.", rating: 4.8, visitors: "40K+", isArAvailable: true, arGlb: "/model/ar/hampi.glb", arUsdz: "/model/ar/hampi.usdz",      mapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Konark+Sun+Temple+Odisha",
- }, { id: 5, name: "Humayuns Tomb", location: "Amritsar, Punjab", founded: "1581", image: "https://res.cloudinary.com/https-www-isango-com/image/upload/f_auto/v7682/South%20Asia/India/Delhi/43044.jpg", description: "The most important pilgrimage site of Sikhism, famous for its golden dome.", rating: 4.9, visitors: "60K+", isArAvailable: false,      mapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Konark+Sun+Temple+Odisha",
- }, { id: 6, name: "Meenakshi Temple", location: "Madurai, Tamil Nadu", founded: "6th Century (rebuilt 16th Century)", image: "https://cdn.kastatic.org/ka-perseus-images/a8a19d777ab5fee4a3666927202d88dcba7bd42c.jpg", description: "Known for its towering gopurams adorned with thousands of colorful sculptures.", rating: 4.8, visitors: "35K+", isArAvailable: true, arGlb: "/model/ar/meenakshi.glb", arUsdz: "/model/ar/meenakshi.usdz",      mapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Konark+Sun+Temple+Odisha",
- },
+ }, { id: 5, name: "Humayun Tomb", location: "Delhi", founded: "14th Century", image: "https://pohcdn.com/sites/default/files/styles/paragraph__hero_banner__hb_image__1880bp/public/hero_banner/humayun%27s-tomb_optimized.jpg", description: "The ruins of Vijayanagara, once one of the richest cities in the world.", rating: 4.8, visitors: "40K+", isArAvailable: true, arGlb: "/model/ar/humayun.glb", arUsdz: "/model/ar/humayun.usdz",      mapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Konark+Sun+Temple+Odisha",
+ }, {
+  id: 4,
+  name: "Jagannath Puri Temple",
+  location: "Puri, Odisha",
+  founded: "12th Century",
+  image: "https://www.tripsavvy.com/thmb/CqvMyrnnVy5fNLFYTr5zW13s-XE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/_DSC0713_Snapseed_Darkroom-819d0b229974460e8141622c4494e2ed.jpg",
+  description:
+    "One of the Char Dham pilgrimage sites, the Jagannath Temple is dedicated to Lord Jagannath and is renowned for the annual Rath Yatra festival.",
+  rating: 4.9,
+  visitors: "80K+",
+  isArAvailable: true,
+  arGlb: "/model/ar/jagannath.glb", 
+  arUsdz: "/model/ar/jagannath.usdz",
+  mapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Jagannath+Temple+Puri+Odisha",
+},
+
     // add mapsUrl for other sites similarly...
   ];
 
@@ -144,29 +170,41 @@ const HeritageGrid: React.FC = () => {
       </div>
 
       {/* AR Modal */}
-      {selectedSite && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/90 z-50">
-          <button
-            onClick={() => setSelectedSite(null)}
-            className="absolute top-4 right-4 bg-red-600 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl font-bold shadow-lg z-50"
-          >
-            ✕
-          </button>
+      {/* AR Modal */}
+{selectedSite && (
+  <div className="fixed inset-0 flex items-center justify-center bg-black/90 z-50">
+    <button
+      onClick={() => setSelectedSite(null)}
+      className="absolute top-4 right-4 bg-red-600 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl font-bold shadow-lg z-50"
+    >
+      ✕
+    </button>
 
-          <model-viewer
-            src={selectedSite.arGlb}
-            ios-src={selectedSite.arUsdz}
-            alt={selectedSite.name}
-            ar
-            auto-rotate
-            camera-controls
-            interaction-prompt="auto"
-            shadow-intensity="1"
-            exposure="1"
-            style={{ width: "90%", height: "90%" }}
-          ></model-viewer>
-        </div>
-      )}
+    {/* 3D Model Viewer */}
+    <model-viewer
+      src={selectedSite.arGlb}
+      ios-src={selectedSite.arUsdz}
+      alt={selectedSite.name}
+      ar
+      auto-rotate
+      camera-controls
+      interaction-prompt="auto"
+      shadow-intensity="1"
+      exposure="1"
+      style={{ width: "90%", height: "90%" }}
+    ></model-viewer>
+
+    {/* 🎧 Audio Narration */}
+    <audio
+      src={`/audio/${selectedSite.id}.mp3`} // e.g. public/audio/1.mp3, 2.mp3, etc.
+      autoPlay
+      controls
+      loop={false}
+      className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-80"
+    />
+  </div>
+)}
+
     </section>
   );
 };

@@ -1,19 +1,8 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState } from "react";
 import { MapPin, Clock, Eye, Star, Navigation } from "lucide-react";
 
 const HeritageGrid: React.FC = () => {
   const [selectedSite, setSelectedSite] = useState<any>(null);
-
-  useEffect(() => {
-  if (selectedSite) {
-    const audio = new Audio(`/audio/${selectedSite.id}.mp3`);
-    audio.play();
-    return () => {
-      audio.pause();
-      audio.currentTime = 0;
-    };
-  }
-}, [selectedSite]);
 
 
   const heritageSites = [
@@ -82,7 +71,7 @@ const HeritageGrid: React.FC = () => {
     // add mapsUrl for other sites similarly...
   ];
 
-  return (
+   return (
     <section id="explore" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
@@ -101,7 +90,6 @@ const HeritageGrid: React.FC = () => {
               className="relative bg-white border border-gray-200/80 rounded-2xl shadow-md overflow-hidden 
              hover:shadow-2xl hover:border-yellow-400/60 transition-all duration-500 transform hover:-translate-y-2"
             >
-              {/* Image */}
               <div className="relative">
                 <img
                   src={site.image}
@@ -109,14 +97,12 @@ const HeritageGrid: React.FC = () => {
                   className="w-full h-52 object-cover rounded-t-2xl"
                 />
 
-                {/* Visitors Badge */}
                 <div className="absolute bottom-4 left-4 flex items-center space-x-2 bg-black/50 backdrop-blur-md rounded-full px-3 py-1 shadow">
                   <Eye className="w-4 h-4 text-white" />
                   <span className="text-white text-xs font-medium">{site.visitors}</span>
                 </div>
               </div>
 
-              {/* Content */}
               <div className="p-6">
                 <h3 className="text-lg font-bold text-gray-900 mb-1">{site.name}</h3>
                 <p className="text-gray-600 text-sm mb-4 leading-relaxed">{site.description}</p>
@@ -153,7 +139,6 @@ const HeritageGrid: React.FC = () => {
                       </button>
                     )}
 
-                    {/* Navigate Icon */}
                     <button
                       onClick={() => window.open(site.mapsUrl, "_blank")}
                       className="p-2 bg-gray-200 rounded-full hover:bg-gray-300 transition-all"
@@ -169,42 +154,38 @@ const HeritageGrid: React.FC = () => {
         </div>
       </div>
 
-      {/* AR Modal */}
-      {/* AR Modal */}
-{selectedSite && (
-  <div className="fixed inset-0 flex items-center justify-center bg-black/90 z-50">
-    <button
-      onClick={() => setSelectedSite(null)}
-      className="absolute top-4 right-4 bg-red-600 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl font-bold shadow-lg z-50"
-    >
-      ✕
-    </button>
+      {/* ✅ Fixed AR Modal */}
+      {selectedSite && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black/90 z-50">
+          <button
+            onClick={() => setSelectedSite(null)}
+            className="absolute top-4 right-4 bg-red-600 text-white rounded-full w-10 h-10 flex items-center justify-center text-xl font-bold shadow-lg z-50"
+          >
+            ✕
+          </button>
 
-    {/* 3D Model Viewer */}
-    <model-viewer
-      src={selectedSite.arGlb}
-      ios-src={selectedSite.arUsdz}
-      alt={selectedSite.name}
-      ar
-      auto-rotate
-      camera-controls
-      interaction-prompt="auto"
-      shadow-intensity="1"
-      exposure="1"
-      style={{ width: "90%", height: "90%" }}
-    ></model-viewer>
+          <model-viewer
+            src={selectedSite.arGlb}
+            ios-src={selectedSite.arUsdz}
+            alt={selectedSite.name}
+            ar
+            auto-rotate
+            camera-controls
+            interaction-prompt="auto"
+            shadow-intensity="1"
+            exposure="1"
+            style={{ width: "90%", height: "90%" }}
+          ></model-viewer>
 
-    {/* 🎧 Audio Narration */}
-    <audio
-      src={`/audio/${selectedSite.id}.mp3`} // e.g. public/audio/1.mp3, 2.mp3, etc.
-      autoPlay
-      controls
-      loop={false}
-      className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-80"
-    />
-  </div>
-)}
-
+          {/* 🎧 Only this audio now */}
+          <audio
+            src={`/audio/${selectedSite.id}.mp3`}
+            autoPlay
+            controls
+            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-80"
+          />
+        </div>
+      )}
     </section>
   );
 };

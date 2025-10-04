@@ -20,8 +20,9 @@ function App() {
         <>
           <Hero onNavigate={setActiveTab} />
           <MonasteryPhotoShowcase />
-          <CrowdReportTab />
+          
           <MonasteryGrid />
+          <CrowdReportTab />
           <Footer />
         </>
       )}

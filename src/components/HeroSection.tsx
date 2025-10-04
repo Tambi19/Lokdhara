@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHourglassHalf, faBell } from "@fortawesome/free-solid-svg-icons";
-import heroimg from "../assets/hero.jpg";
+import heroimg from "../assets/hero.png";
 
 type HeroProps = {
   onNavigate: (tab: "home" | "timetravel" | "arview") => void;

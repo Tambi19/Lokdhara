@@ -13,7 +13,6 @@ const CrowdReportTab: React.FC = () => {
   const [description, setDescription] = useState<string>("");
   const [geoTag, setGeoTag] = useState<GeoTag | null>(null);
 
-  // 📸 Handle photo upload
   const handlePhotoUpload = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -22,7 +21,6 @@ const CrowdReportTab: React.FC = () => {
     }
   };
 
-  // 📍 Capture user location
   const handleGeoTag = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -42,15 +40,12 @@ const CrowdReportTab: React.FC = () => {
     }
   };
 
-  // 📨 Handle form submission
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-
     if (!photo || !description) {
       alert("Please upload a photo and provide a description.");
       return;
     }
-
     const reportData = {
       photoName: photo.name,
       description,
@@ -58,11 +53,8 @@ const CrowdReportTab: React.FC = () => {
       geoTag,
       timestamp: new Date().toISOString(),
     };
-
     console.log("Report Submitted:", reportData);
     alert("✅ Thank you! Your report has been submitted successfully.");
-
-    // Reset fields
     setPhoto(null);
     setPreview(null);
     setDescription("");
@@ -75,11 +67,9 @@ const CrowdReportTab: React.FC = () => {
       id="crowdreport"
       className="py-24 relative bg-gradient-to-br from-amber-50 via-white to-yellow-100 overflow-hidden"
     >
-      {/* Background pattern / overlay */}
       <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/arches.png')]"></div>
 
       <div className="relative container mx-auto px-6 max-w-3xl">
-        {/* Card */}
         <div className="backdrop-blur-lg bg-white/80 rounded-3xl shadow-2xl border border-amber-100 p-10 hover:shadow-yellow-200 transition-all duration-300">
           <h2 className="text-4xl font-bold text-gray-800 mb-4 text-center">
             🏛️ Crowdsourced Site Reporting
@@ -133,20 +123,23 @@ const CrowdReportTab: React.FC = () => {
               />
             </div>
 
-            {/* Location Input + Geo-tag Button */}
-            <div className="flex items-center gap-3">
-              <MapPin className="w-6 h-6 text-yellow-600" />
-              <input
-                type="text"
-                placeholder="Enter site/location name"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-                className="flex-1 border border-amber-200 bg-amber-50 rounded-2xl p-3 text-gray-700 focus:ring-2 focus:ring-yellow-500 focus:bg-white outline-none"
-              />
+            {/* 📍 Responsive Location + Geo-tag Section */}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+              <div className="flex items-center gap-2 flex-1 w-full">
+                <MapPin className="w-6 h-6 text-yellow-600 shrink-0" />
+                <input
+                  type="text"
+                  placeholder="Enter site/location name"
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                  className="flex-1 border border-amber-200 bg-amber-50 rounded-2xl p-3 text-gray-700 focus:ring-2 focus:ring-yellow-500 focus:bg-white outline-none w-full"
+                />
+              </div>
+
               <button
                 type="button"
                 onClick={handleGeoTag}
-                className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-4 py-2 rounded-xl flex items-center gap-2 font-medium hover:from-yellow-600 hover:to-orange-600 transition-all duration-300 shadow-md"
+                className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-4 py-3 rounded-xl flex items-center justify-center gap-2 font-medium hover:from-yellow-600 hover:to-orange-600 transition-all duration-300 shadow-md w-full sm:w-auto"
               >
                 <Camera className="w-4 h-4" /> Geo-tag
               </button>
@@ -160,9 +153,8 @@ const CrowdReportTab: React.FC = () => {
               <Send className="w-5 h-5" /> Submit Report
             </button>
 
-            {/* Geo-tag Display */}
             {geoTag && (
-              <div className="text-sm text-gray-500 mt-4 text-center bg-amber-50 rounded-xl py-2 border ">
+              <div className="text-sm text-gray-500 mt-4 text-center bg-amber-50 rounded-xl py-2 border">
                 📍 Geo-tag: {geoTag.lat.toFixed(4)}, {geoTag.lng.toFixed(4)}
               </div>
             )}

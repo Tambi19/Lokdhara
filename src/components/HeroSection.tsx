@@ -1,10 +1,14 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHourglassHalf,faBell } from "@fortawesome/free-solid-svg-icons";
+import { faHourglassHalf, faBell } from "@fortawesome/free-solid-svg-icons";
 import heroimg from "../assets/hero.jpg";
 
-const Hero: React.FC = () => {
+type HeroProps = {
+  onNavigate: (tab: "home" | "timetravel" | "arview") => void;
+};
+
+const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
   const btnRefs = useRef<HTMLButtonElement[]>([]);
 
   useEffect(() => {
@@ -14,24 +18,6 @@ const Hero: React.FC = () => {
         { opacity: 0, y: 30, scale: 0.9 },
         { opacity: 1, y: 0, scale: 1, duration: 1, ease: "back.out(1.7)" }
       );
-
-      btn.addEventListener("mouseenter", () => {
-        gsap.to(btn, {
-          scale: 1.08,
-          boxShadow: "0px 0px 25px rgba(255,255,255,0.5)",
-          duration: 0.3,
-          ease: "power2.out",
-        });
-      });
-
-      btn.addEventListener("mouseleave", () => {
-        gsap.to(btn, {
-          scale: 1,
-          boxShadow: "0px 0px 8px rgba(255,255,255,0.2)",
-          duration: 0.3,
-          ease: "power2.inOut",
-        });
-      });
     });
   }, []);
 
@@ -45,7 +31,6 @@ const Hero: React.FC = () => {
         backgroundPosition: "center",
       }}
     >
-      {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-purple-900/40"></div>
 
       <div className="relative z-10 max-w-3xl px-4">
@@ -53,55 +38,38 @@ const Hero: React.FC = () => {
           Discover{" "}
           <span className="text-purple-300 font-tibetan">Culture & Sacred Heritage</span>
         </h1>
-        <p className="mt-6 text-lg md:text-xl text-gray-200 ">
+        <p className="mt-6 text-lg md:text-xl text-gray-200">
           Immerse yourself in Cultural Heritage Sites through cutting-edge 360° AR
-          technology, exploring centuries of cultural
-          treasures.
+          technology, exploring centuries of cultural treasures.
         </p>
 
         {/* CTA Buttons */}
         <div className="mt-8 flex flex-wrap justify-center gap-6">
-          {/* VR Tour Button */}
           <button
-  ref={(el) => el && (btnRefs.current[0] = el)}
-  className="relative flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-white 
-             border border-orange-400/70 backdrop-blur-lg 
-             bg-gradient-to-r from-orange-400/30 to-pink-500/30 
-             hover:from-orange-400/50 hover:to-pink-500/50 
-             transition duration-300 overflow-hidden"
->
-  <FontAwesomeIcon icon={faHourglassHalf} className="w-5 h-5 text-blue-300" />
-  Time Travel
-</button>
+            ref={(el) => el && (btnRefs.current[0] = el)}
+            onClick={() => onNavigate("timetravel")}
+            className="relative flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-white 
+                       border border-orange-400/70 backdrop-blur-lg 
+                       bg-gradient-to-r from-orange-400/30 to-pink-500/30 
+                       hover:from-orange-400/50 hover:to-pink-500/50 
+                       transition duration-300 overflow-hidden"
+          >
+            <FontAwesomeIcon icon={faHourglassHalf} className="w-5 h-5 text-blue-300" />
+            Time Travel
+          </button>
 
-          {/* Explore Map Button */}
           <button
-  ref={(el) => el && (btnRefs.current[1] = el)}
-  className="relative flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-white 
-             border border-orange-400/70 backdrop-blur-lg 
-             bg-gradient-to-r from-orange-400/30 to-pink-500/30 
-             hover:from-orange-400/50 hover:to-pink-500/50 
-             transition duration-300 overflow-hidden"
->
-  <FontAwesomeIcon icon={faBell} className="w-5 h-5 text-white" />
-  AR View
-</button>
-        </div>
-
-        {/* Stats */}
-        <div className="mt-10 flex justify-center gap-8 text-white-300 font-semibold">
-          <div>
-            <p className="text-2xl">25+</p>
-            <p className="text-sm">Monasteries</p>
-          </div>
-          <div>
-            <p className="text-2xl">1000+</p>
-            <p className="text-sm">Years of History</p>
-          </div>
-          <div>
-            <p className="text-2xl">50K+</p>
-            <p className="text-sm">Visitors</p>
-          </div>
+            ref={(el) => el && (btnRefs.current[1] = el)}
+            onClick={() => onNavigate("arview")}
+            className="relative flex items-center gap-2 px-8 py-3 rounded-full font-semibold text-white 
+                       border border-orange-400/70 backdrop-blur-lg 
+                       bg-gradient-to-r from-orange-400/30 to-pink-500/30 
+                       hover:from-orange-400/50 hover:to-pink-500/50 
+                       transition duration-300 overflow-hidden"
+          >
+            <FontAwesomeIcon icon={faBell} className="w-5 h-5 text-white" />
+            AR View
+          </button>
         </div>
       </div>
     </section>

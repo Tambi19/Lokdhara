@@ -10,7 +10,7 @@ export const Chatbot = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [userInput, setUserInput] = useState<string>('');
     const [messages, setMessages] = useState<Message[]>([
-        { text: "Welcome to DarshanX! How can I assist you?", sender: 'bot' }
+        { text: "Welcome to LokDhara ! How can I assist you?", sender: 'bot' }
     ]);
 
     const chatMessagesRef = useRef<HTMLDivElement>(null);
@@ -24,11 +24,11 @@ export const Chatbot = () => {
 
     const getBotResponse = (userMessage: string): string => {
         const msg = userMessage.toLowerCase();
-        if (msg.includes('hello') || msg.includes('hi')) return "Hello! Ask me about monasteries, VR, or our 'Time Travel' feature.";
-        if (msg.includes('monasteries')) return "We feature over 25 historic monasteries, including Rumtek and Pemayangtse. Which would you like to know about?";
-        if (msg.includes('vr')) return "Our 360° VR technology lets you virtually explore the monasteries. Just click on a location to begin!";
+        if (msg.includes('hello') || msg.includes('hi')) return "Hello! Ask me about heritage, AR, or our 'Time Travel' feature.";
+        if (msg.includes('Heritaged Sites')) return "We feature over 50+ historic Heritage Sites, including Konark Temple and Jagannath Temple. Which would you like to know about?";
+        if (msg.includes('vr')) return "Our 360° VR technology lets you virtually explore the Heritage Sites. Just click on a location to begin!";
         if (msg.includes('time travel')) return "The 'Time Travel' feature shows you historical photos and information about the sites.";
-        return "I'm not sure how to answer that. You can ask about 'monasteries', 'VR', or 'time travel'.";
+        return "I'm not sure how to answer that. You can ask about 'heritage Sites', 'VR', or 'time travel'.";
     };
 
     const handleSendMessage = () => {
@@ -57,7 +57,7 @@ export const Chatbot = () => {
             >
                 {/* Chat Header */}
                 <div className="bg-slate-700 text-slate-100 p-4 flex justify-between items-center rounded-t-xl border-b border-slate-600">
-                    <h3 className="font-semibold text-lg">DarshanX Guide</h3>
+                    <h3 className="font-semibold text-lg">LokDhara Guide</h3>
                     <button onClick={() => setIsOpen(false)} className="text-2xl hover:text-slate-300">&times;</button>
                 </div>
 

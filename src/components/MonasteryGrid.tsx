@@ -174,7 +174,8 @@ const HeritageGrid: React.FC = () => {
             interaction-prompt="auto"
             shadow-intensity="1"
             exposure="1"
-            style={{ width: "90%", height: "90%" }}
+
+            style={{ width: "110%", height: "110%" }}
           ></model-viewer>
 
           {/* 🎧 Only this audio now */}

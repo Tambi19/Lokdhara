@@ -5,7 +5,7 @@ import { faHourglassHalf, faBell } from "@fortawesome/free-solid-svg-icons";
 import heroimg from "../assets/bg.jpg";
 
 type HeroProps = {
-  onNavigate: (tab: "home" | "timetravel" | "arview") => void;
+  onNavigate: (tab: "home" | "timetravel" | "crowdreport") => void;
 };
 
 const Hero: React.FC<HeroProps> = ({ onNavigate }) => {

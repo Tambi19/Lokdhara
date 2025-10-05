@@ -4,7 +4,11 @@ import navlogo from "../assets/navlogo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBus, faHotel, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
-const Header: React.FC = () => {
+type HeaderProps = {
+  onNavigate: (tab: "home" | "explore" | "crowdreport") => void;
+};
+
+const Header: React.FC<HeaderProps> = ({ onNavigate }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isTripOpen, setIsTripOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -20,6 +24,14 @@ const Header: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navItems = [
+    { name: "Home", tab: "home" },
+    { name: "Explore", tab: "explore" },
+    { name: "Community", tab: "crowdreport" },
+    { name: "Folktales", tab: "folktales" },
+
+  ];
+
   return (
     <header
       className={`fixed top-0 w-full z-50 backdrop-blur-xl transition-all duration-500 ${
@@ -31,31 +43,25 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-6 relative">
         <div className="flex items-center justify-between h-16">
           {/* 🌸 Logo */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-3 cursor-pointer" onClick={() => onNavigate("home")}>
             <img
               src={navlogo}
               alt="Logo"
               className="h-12 w-auto rounded-xl shadow-md ring-2 ring-yellow-100/50"
             />
-            {/* <h1 className="text-2xl font-bold bg-gradient-to-r from-yellow-300 via-orange-400 to-pink-500 bg-clip-text text-transparent drop-shadow-lg tracking-wide">
-            Lokdhara
-            </h1> */}
           </div>
 
           {/* 🪷 Desktop Navigation */}
           <nav className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 items-center space-x-10 font-semibold tracking-wide">
-            {["Home", "Explore", "Community"].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+            {navItems.map((item) => (
+              <button
+                key={item.name}
+                onClick={() => onNavigate(item.tab as "home" | "explore" | "crowdreport")}
                 className="relative group text-white/90 hover:text-transparent bg-gradient-to-r from-yellow-300 via-orange-400 to-pink-500 bg-clip-text transition duration-500"
               >
-                {item}
-                {/* 🔥 Glowing underline */}
+                {item.name}
                 <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 rounded-full group-hover:w-full transition-all duration-500"></span>
-
-                {/* ✨ Glow on hover */}
-              </a>
+              </button>
             ))}
 
             {/* 🏯 Plan Your Trip Dropdown */}
@@ -112,56 +118,18 @@ const Header: React.FC = () => {
         {isMenuOpen && (
           <div className="md:hidden absolute top-16 left-0 w-full bg-black/70 backdrop-blur-md shadow-xl border-t border-yellow-300/20 rounded-b-3xl animate-fadeIn">
             <div className="flex flex-col items-start px-6 py-5 space-y-4 text-white font-medium">
-              {["Home", "Explore", "Community"].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="w-full hover:text-yellow-300 transition duration-300"
-                >
-                  {item}
-                </a>
-              ))}
-
-              {/* Mobile Dropdown */}
-              <div className="w-full">
+              {navItems.map((item) => (
                 <button
-                  onClick={() => setIsTripOpen(!isTripOpen)}
-                  className="w-full text-left hover:text-yellow-300 flex justify-between items-center"
+                  key={item.name}
+                  onClick={() => {
+                    onNavigate(item.tab as "home" | "explore" | "crowdreport");
+                    setIsMenuOpen(false);
+                  }}
+                  className="w-full hover:text-yellow-300 transition duration-300 text-left"
                 >
-                  Plan Your Trip
-                  <span>{isTripOpen ? "▲" : "▼"}</span>
+                  {item.name}
                 </button>
-
-                {isTripOpen && (
-                  <div className="mt-2 ml-4 flex flex-col gap-2 text-yellow-100 text-sm">
-                    <a
-                      href="#transport"
-                      onClick={() => setIsMenuOpen(false)}
-                      className="flex items-center gap-2 hover:text-yellow-300"
-                    >
-                      <FontAwesomeIcon icon={faBus} />
-                      Local Transport
-                    </a>
-                    <a
-                      href="#stay"
-                      onClick={() => setIsMenuOpen(false)}
-                      className="flex items-center gap-2 hover:text-yellow-300"
-                    >
-                      <FontAwesomeIcon icon={faHotel} />
-                      Stay & Food
-                    </a>
-                    <a
-                      href="#itineraries"
-                      onClick={() => setIsMenuOpen(false)}
-                      className="flex items-center gap-2 hover:text-yellow-300"
-                    >
-                      <FontAwesomeIcon icon={faLocationDot} />
-                      Itineraries
-                    </a>
-                  </div>
-                )}
-              </div>
+              ))}
             </div>
           </div>
         )}

@@ -169,29 +169,37 @@ const FolktaleSection: React.FC = () => {
         )}
 
         {/* Video Modal */}
-        {/* Video Modal */}
+{/* Video Modal */}
 {videoStory && (
   <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 animate-fadeIn p-4">
-    <div className="relative w-full h-full max-w-6xl max-h-[90vh]">
-      {/* Close button */}
+    <div className="relative w-full h-full max-w-6xl max-h-[90vh] flex items-center justify-center">
+      
+      {/* Close button — fixed and safe for mobile */}
       <button
         onClick={() => setVideoStory(null)}
-        className="absolute top-4 right-4 text-gray-400 hover:text-red-500 text-3xl font-bold z-50"
+        className="absolute top-4 right-4 md:top-6 md:right-6 text-gray-300 hover:text-red-500 text-4xl font-bold z-50 bg-black/40 rounded-full p-2 backdrop-blur-sm"
+        style={{
+          zIndex: 60,
+          touchAction: "manipulation",
+        }}
       >
         ✕
       </button>
 
-      {/* Video iframe */}
-      <iframe
-        src={videoStory.video}
-        title={videoStory.title}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-        className="w-full h-full rounded-2xl shadow-2xl"
-      ></iframe>
+      {/* Responsive iframe container */}
+      <div className="w-full aspect-video max-h-[85vh] rounded-2xl overflow-hidden shadow-2xl">
+        <iframe
+          src={videoStory.video}
+          title={videoStory.title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="w-full h-full"
+        ></iframe>
+      </div>
     </div>
   </div>
 )}
+
 
 
       </div>

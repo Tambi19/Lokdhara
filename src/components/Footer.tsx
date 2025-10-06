@@ -11,13 +11,13 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-10 h-10 bg-gradient-to-br from-orange-700 to-orange-600 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-lg">L</span>
+                <span className="text-white font-bold text-lg">S</span>
               </div>
-              <span className="text-xl font-bold">Lokdhara</span>
+              <span className="text-xl font-bold">Sanskriti-X</span>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
               Explore culture and heritage sites with AR.  
-              Lokdhara brings traditions to life through immersive digital experiences 
+              Sanskriti-X brings traditions to life through immersive digital experiences 
               that connect you with India’s living heritage.
             </p>
             <div className="flex space-x-4">
@@ -69,7 +69,7 @@ const Footer: React.FC = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-gray-300">Lokdhara HQ</p>
+                  <p className="text-gray-300">Sanskriti-X HQ</p>
                   <p className="text-gray-300">New Delhi, India</p>
                   <p className="text-gray-300">PIN 110001</p>
                 </div>
@@ -83,7 +83,7 @@ const Footer: React.FC = () => {
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-orange-500" />
                 <a href="mailto:info@lokdhara.in" className="text-gray-300 hover:text-white transition-colors duration-200">
-                  info@lokdhara.in
+                  info@sanskriti-X.in
                 </a>
               </div>
             </div>
@@ -111,7 +111,7 @@ const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between">
           <div className="text-gray-400 text-sm mb-4 md:mb-0">
-            <p>&copy; 2025 Lokdhara. All rights reserved.</p>
+            <p>&copy; 2025 Sanskriti X. All rights reserved.</p>
           </div>
           <div className="flex items-center space-x-6 text-sm">
             <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">Privacy Policy</a>

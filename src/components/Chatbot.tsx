@@ -16,7 +16,7 @@ export const Chatbot = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [userInput, setUserInput] = useState<string>('');
   const [messages, setMessages] = useState<Message[]>([
-    { text: "Welcome to LokDhara! I am your heritage guide. How can I assist you?", sender: 'bot' }
+    { text: "Welcome to Sanskriti-X ! I am your heritage guide. How can I assist you?", sender: 'bot' }
   ]);
   const [isTyping, setIsTyping] = useState<boolean>(false);
 
@@ -90,7 +90,7 @@ export const Chatbot = () => {
         {/* Chat Header */}
         <div className="bg-[#4D4A6A]/50 text-white p-4 flex justify-between items-center rounded-t-2xl border-b border-white/10 shadow-md">
           {/* Updated: Larger font size to match the new window size */}
-          <h3 className="font-roboto font-bold text-2xl">LokDhara Guide</h3>
+          <h3 className="font-roboto font-bold text-2xl">Sanskriti X</h3>
           <button onClick={() => setIsOpen(false)} className="text-3xl text-white/70 hover:text-white transition-colors">&times;</button>
         </div>
 
